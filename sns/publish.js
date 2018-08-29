@@ -5,7 +5,6 @@ const sns = new AWS.SNS()
 module.exports = (TopicArn, message) => {
   const params = {
     TopicArn,
-    Subject: topic,
     Message: JSON.stringify(message),
     MessageAttributes: {}
   }
