@@ -2,11 +2,7 @@ const AWS = require('aws-sdk')
 const requestContext = require('./_requestContext')
 const sns = new AWS.SNS()
 
-module.exports = async (topic, message) => {
-  // this is a cheat to lookup the topic ARN. 
-  // https://stackoverflow.com/questions/36721014/aws-sns-how-to-get-topic-arn-by-topic-name
-  const { TopicArn } = await sns.createTopic({ Name: topic }).promise()
-
+module.exports = (TopicArn, message) => {
   const params = {
     TopicArn,
     Subject: topic,
@@ -25,5 +21,5 @@ module.exports = async (topic, message) => {
     }
   }
 
-  return await sns.publish(params).promise()
+  return sns.publish(params).promise()
 }
