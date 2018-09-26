@@ -1,8 +1,9 @@
 const AWS = require('aws-sdk')
 const requestContext = require('./_requestContext')
-const sns = new AWS.SNS()
 
-module.exports = (TopicArn, message) => {
+module.exports = (TopicArn, message, awsOptions) => {
+  const sns = new AWS.SNS(awsOptions)
+
   const params = {
     TopicArn,
     Message: JSON.stringify(message),
