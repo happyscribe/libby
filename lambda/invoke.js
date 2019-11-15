@@ -7,17 +7,16 @@ const AWS = process.env.LAMBDA_RUNTIME_DIR
   ? AWSXRay.captureAWS(require('aws-sdk'))
   : require('aws-sdk')
 
-const lambda = new AWS.Lambda({
-  region: 'eu-west-1'
-});
-
 module.exports = (FunctionName, awsOptions) =>  {
   const lambda = new AWS.Lambda(awsOptions)
 
-  return async payload => {
+  return async (payload, {
+    async,
+  }={}) => {
     const params = {
       FunctionName,
       Payload: JSON.stringify(payload),
+      InvocationType: async ? 'Event' : 'RequestResponse',
     }
 
     // load any context and pass it along.
