@@ -39,6 +39,7 @@ test('invoke - without context', async assert => {
   const expected = {
     FunctionName: 'someFunction',
     Payload: '{"bar":"baz"}',
+    ClientContext: Buffer.from('{"custom":{}}').toString('base64')
   }
 
   const res = await invoke('someFunction')({ bar: 'baz' })

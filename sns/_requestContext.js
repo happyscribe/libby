@@ -5,7 +5,7 @@ let log = require('./_log')
 let requestContext
 
 try {
-  requestContext = require('libby.reqcontext')
+  requestContext = require('../reqContext')
 } catch (e) {
   log.debug('requestContext not available') 
 }

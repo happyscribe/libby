@@ -1,7 +1,7 @@
 let log
 
 try {
-  log = require('libby/log')
+  log = require('../log')
 } catch (e) {
   log = console
   log.debug('logger not available. using console')

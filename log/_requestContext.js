@@ -3,7 +3,7 @@
 let requestContext
 
 try {
-  requestContext = require('libby.reqcontext')
+  requestContext = require('../reqContext')
 } catch (e) {
   console.log('requestContext not available') 
 }
