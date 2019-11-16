@@ -1,5 +1,5 @@
 const AWSXRay = require('aws-xray-sdk-core')
-const AWS = process.env.LAMBDA_RUNTIME_DIR
+const AWS = process.env.LAMBDA_RUNTIME_DIR && process.env_X_AMZN_TRACE_ID
   ? AWSXRay.captureAWS(require('aws-sdk'))
   : require('aws-sdk')
 const requestContext = require('./_requestContext')
