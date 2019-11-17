@@ -3,7 +3,7 @@ const log = require('./_log')
 
 const AWSXRay = require('aws-xray-sdk-core')
 
-const AWS = process.env.LAMBDA_RUNTIME_DIR && process.env_X_AMZN_TRACE_ID
+const AWS = process.env.LAMBDA_RUNTIME_DIR && process.env._X_AMZN_TRACE_ID
   ? AWSXRay.captureAWS(require('aws-sdk'))
   : require('aws-sdk')
 
