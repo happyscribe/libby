@@ -52,8 +52,8 @@ function log(level, message, params) {
 
   let logMsg = {
     ...DEFAULT_PARAMS,
-    ...context,
     ...params,
+    context,
     level,
     message,
   }
