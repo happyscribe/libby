@@ -42,7 +42,7 @@ function log(level, message, params) {
   }
 
   // default to DEBUG
-  const levelSet = context.logLevel || process.env.logLevel || 'INFO'
+  const levelSet = context.logLevel || process.env.logLevel || 'DEBUG'
 
   // only log if the level is greater than what is set in context
   // i.e. dont log debug events if the level is set to warn
