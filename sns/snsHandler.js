@@ -6,7 +6,7 @@ module.exports = func => async ({ Records }) => {
   
   for (let record of parsed) {
     if (reqContext)
-      reqContext.replaceAllWith(record.context)
+      reqContext.replace(record.context)
 
     await func(record.event)
   }

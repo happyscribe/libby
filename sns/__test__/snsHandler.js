@@ -12,7 +12,7 @@ test('snsHandler', async assert => {
   const snsHandler = proxyquire('../snsHandler', {
     ...defaultStubs,
     './_requestContext': {
-      replaceAllWith: params => context = params
+      replace: params => context = params
     }
   })
 
