@@ -33,21 +33,21 @@ module.exports = (FunctionName, awsOptions) =>  {
     }
 
     const res = await lambda.invoke(params).promise()
-
+    
     // this only check that the lambda invocation was successfull.
-    if (res.StatusCode !== 200 && res.StatusCode !== 201) {
+    if (!/^2/.test(res.StatusCode)) {
       throw res
     }
+    
+    //async invocations have no response payload
+    if (async) 
+      return
 
     const parsed = JSON.parse(res.Payload)
 
     // we need to check for function errors here, since lambda INVOKE will return 200
     if (parsed && parsed.errorMessage) {
       throw parsed.errorMessage
-    }
-
-    if (parsed == null) {
-      log.warn('Function payload is null', res);
     }
     
 
